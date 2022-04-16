@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  project-one:
+    build:
+      dockerfile: ./project-one/Dockerfile
+      context: .
+      target: development
+    volumes:
+      - ./project-one:/usr/src/app
+      - ./usr/src/app/node_modules
+    command: npm run start:debug
+    ports:
+      - 8080:3000
+      # debugging port
+      - 9229:9229
+  project-two:
+    build:
+      dockerfile: ./project-two/Dockerfile
+      context: .
+      target: development
+    volumes:
+      - ./project-two:/usr/src/app
+      - ./usr/src/app/node_modules
+    command: npm run start:debug
+    ports:
+      - 8080:3000
+      # debugging port
+      - 9229:9229
